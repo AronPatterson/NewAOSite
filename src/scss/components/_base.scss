@@ -1,0 +1,231 @@
+// *** BASE STYLES *** //
+// These are the core template files; you usually will not have to touch these, as siteSettings variables will control most of them.
+
+@import 'framework';
+
+// The styles at the beginning of the stylesheet, modifying the structural elements of the layout
+html, body {
+	min-height: 100%; // in case we need a 100% screen-height stretch (must be present on all child divs to work correctly)
+}
+body {
+	height: 100%;
+	font-family: $ao-body-font-family;
+	font-size: $ao-font-size; // base font size - never change (only dollars)
+	color: $ao-body-font-color;
+	background: $ao-body-background;
+	background-size: cover;
+	background-attachment: fixed;
+	text-rendering: optimizeLegibility;
+	overflow-x: hidden;
+}
+#top {
+	// sets a maximum width for site, to ensure nothing looks awful on large screens
+	max-width: 2560px;
+	margin: 0 auto;
+}
+
+// SELECTION (selecting text) & PLACEHOLDER (empty field placeholder text, for forms)
+// please do not try to combine these via commas - they need to be their own independent elements
+::-moz-selection {
+	// Firefox needs its own unique selector
+	color: $white;
+	background: rgba($secondary-color, .8);
+	text-shadow: none;
+}
+::-webkit-selection {
+	// so does Chrome apparently
+	color: $white;
+	background: rgba($secondary-color, .8);
+	text-shadow: none;
+}
+::selection {
+	// this affects the background color of text and image selections
+	color: $white;
+	background: rgba($secondary-color, .8);
+	text-shadow: none;
+}
+%placeholder-attribute {
+	color: $medium-gray;
+}
+:-moz-placeholder {
+	// Firefox 18-
+	@extend %placeholder-attribute;
+}
+::-moz-placeholder {
+	// Firefox 19+
+	@extend %placeholder-attribute;
+}
+:-ms-input-placeholder {
+	// ... take a guess
+	@extend %placeholder-attribute;
+}
+:focus::-webkit-input-placeholder {
+	// iOS disappear-on-focus hack
+	color: transparent;
+}
+
+
+/* GENERAL CLASSES */
+h2, h3, h4, h5, h6 {
+	@include breakpoint(medium down) {
+		text-align: center;
+		margin-top: 8px;
+	}
+}
+
+input[type="submit"] {
+	position: relative;
+	@include button(false, $scarlet, $brown, $white, solid);
+	border: 1px solid rgba($deep-red,.3);
+	transition: border 2s, box-shadow .5s;
+	box-shadow: -4px 4px 5px -4px rgba(0,0,0,.5);
+	&:active {
+		border: 1px solid transparent;
+		box-shadow: none;
+	}
+	@include disable-mouse-outline; // nifty feature that kills outlines for mouse users, but not for keyboard users
+}
+button {
+	@include disable-mouse-outline;
+}
+
+/*/ GLOBAL CONTAINER /*/
+#top {
+	min-height: 100%;
+}
+
+// if the user has less than IE9... shame upon them and their houses
+#ltie9 {
+	display: block;
+	background-color: $scarlet;
+	border: 1px solid $white;
+	padding: 10px;
+	text-align: center;
+	color: $white;
+}
+
+/*/ HEADER /*/
+#navContainer {
+	display: block;
+	position: relative;
+	width: 100%;
+	margin: 0 auto;
+}
+
+#mainNav {
+	li {
+		@include breakpoint(large) {
+			a {
+				padding: 0;
+				font-family: $header-font-family;
+				font-size: 38px;
+				color: $brown;
+				@include breakpoint(large down) {
+					font-size: 32px;
+				}
+				&::before {
+					content: "";
+					background-color: $brown;
+					width: 12px;
+					height: 32px;
+					margin-left: 16px;
+					margin-right: 10px;
+					@include breakpoint(large down) {
+						height: 28px;
+					}
+				}
+				&:hover {
+					color: $scarlet;
+					&::before {
+						background-color: $scarlet;
+					}
+				}
+			}
+		}
+	}
+}
+
+/*/ MODULES /*/
+
+
+/*/ FOOTER /*/
+// Footer area content
+#siteFooter {
+	display: block;
+	position: relative;
+	z-index: 1;
+	width: 100%;
+	padding-top: 2%;
+	font-size: 20px;
+	font-family: $header-font-family;
+	color: $white;
+	background: $body-footer-bg;
+	p {
+		margin-top: 20px;
+		font-family: $body-font-family;
+		font-size: 14px;
+		font-weight: bold;
+		font-color: $tan;
+		text-shadow: -1px -1px 0 $deep-red, 
+		1px -1px 0 $deep-red, 
+		-1px 1px 0 $deep-red, 
+		1px 1px 0 $deep-red;
+	}
+	a {
+		color: $white;
+		font-weight: bold;
+		&:hover {
+			color: scale-color($white, $lightness: -20%);
+		}
+	}
+	.menu a {
+		text-shadow: -1px -1px 0 $deep-red, 
+		1px -1px 0 $deep-red, 
+		-1px 1px 0 $deep-red, 
+		1px 1px 0 $deep-red;
+	}
+}
+
+// Back to Top
+.backToTopBtn {
+	display: inline-block;
+	visibility: hidden;
+	position: fixed;
+	right: 20px;
+	bottom: 40px;
+	width: 40px;
+	height: 40px;
+	padding-top: 7px;
+	font-family: 'FontAwesome';
+	font-size: 18px;
+	opacity: 0;
+	color: $white;
+	background: rgba($primary-color, .8) center 50%;
+	box-shadow: 0 0 10px rgba(#000, .05);
+	transition: opacity .3s 0s, visibility 0s .3s;
+	text-align: center;
+	white-space: nowrap;
+	border-radius: $global-radius;
+	@include breakpoint(medium down) {
+		right: 20px;
+		bottom: 20px;
+	}
+	&.bttVisible, &.bttFadeOut, .no-touch &:hover {
+		transition: opacity .3s 0s, visibility 0s 0s;
+	}
+	&.bttVisible {
+		// the button becomes visible
+		visibility: visible;
+		opacity: 1;
+	}
+	&.bttFadeOut {
+		// if the user keeps scrolling down, the button is out of focus and becomes less visible
+		opacity: .5;
+	}
+	.no-touch &:hover {
+		opacity: 1;
+		background-color: rgba($white, 1);
+	}
+}
+
+

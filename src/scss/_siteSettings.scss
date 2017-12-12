@@ -1,0 +1,159 @@
+//* THE VARIABLES *//
+// In this file, we store all of our changeable SCSS variables, as well as our font imports and certain mixins
+// These variables are free to be used within Foundation's _settings.scss as well.
+// AroOnline Responsive Template
+// Version: 3 (R U Minified?)
+// Foundation Version: 6.4.3
+
+// STRUCTURE OPTIONS //
+$aron-box-mode: 1px; // set a 1px border on everything, so you can see the outlines of the elements
+$global-flexbox: true;
+
+// COLORS
+// custom colors
+$tan: #ede1dc;
+$brown: #9a8b7c;
+$scarlet: #952c3b;
+$deep-red: #301e20;
+
+// generic colors
+$foundation-palette: (
+  primary: $primary-color,
+  secondary: $scarlet,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840
+);
+$gray: #999999;
+$light-gray: #e7e7e7; // content
+$medium-gray: #636363; // nav, footer
+$dark-gray: #2c2c2c; // text
+$black: #000;
+$white: #fff;
+
+$primary-color: $brown;
+$secondary-color: $black;
+
+// TRANSLATOR //
+// rather than renaming these every time Foundation updates, we translate them in this file to our own static variables
+$ao-font-size: 100%;
+$ao-global-width: rem-calc(1280);
+$ao-body-font-family: "Open Sans", Arial, sans-serif;
+$ao-body-font-color: $deep-red;
+$ao-body-background: $body-background;
+$ao-global-radius: 4px;
+$ao-global-lineheight: 1.5;
+
+$global-font-size: $ao-font-size;
+$global-width: $ao-global-width;
+$global-lineheight: $ao-global-lineheight;
+$global-radius: $ao-global-radius;
+$global-menu-padding: 0.7rem 1rem;
+$global-menu-nested-margin: 1rem;
+$global-prototype-breakpoints: false;
+$global-button-cursor: auto;
+$global-color-pick-contrast-tolerance: 0;
+$print-transparent-backgrounds: true;
+
+// RESPONSIVE BREAKPOINTS
+$breakpoints: (
+  small: 0,
+  medium: 640px,
+  large: 1024px,
+  xlarge: 1200px,
+  xxlarge: 1440px,
+);
+$print-breakpoint: large;
+$breakpoint-classes: (small medium large xlarge xxlarge);
+
+// THE GRID
+$grid-row-width: $global-width;
+$grid-column-count: 16;
+$grid-column-gutter: (
+  small: 16px,
+  medium: 30px,
+);
+$grid-column-align-edge: true;
+$grid-column-alias: 'columns';
+$block-grid-max: 8;
+
+// BODY
+$body-background: url('../img/bg_underlay.jpg') no-repeat $white;
+$body-font-color: $ao-body-font-color;
+$body-font-family: $ao-body-font-family;
+$body-antialiased: true;
+$body-content-bg: $tan;
+$body-nav-bg: url('../img/nav_bg.png') $dark-gray;
+$body-footer-bg: $primary-color url('../img/ftr_bg.png'); // the image format allows the colors to match the tree colors
+
+// BASE TYPOGRAPHY
+// headers
+$header-font-family: $ao-body-font-family;
+$header-font-weight: $global-weight-normal;
+$header-font-style: normal;
+$header-styles: (
+  small: (
+    'h1': ('font-size': 26),
+    'h2': ('font-size': 22),
+    'h3': ('font-size': 19),
+    'h4': ('font-size': 18),
+    'h5': ('font-size': 17),
+    'h6': ('font-size': 16),
+  ),
+  medium: (
+    'h1': ('font-size': 48),
+    'h2': ('font-size': 40),
+    'h3': ('font-size': 31),
+    'h4': ('font-size': 25),
+    'h5': ('font-size': 20),
+    'h6': ('font-size': 16),
+  ),
+);
+$header-color: $body-font-color;
+$header-lineheight: 1.4;
+$header-margin-bottom: 0.5rem;
+$header-text-rendering: optimizeLegibility;
+$header-small-font-color: $body-font-color;
+
+// content
+$small-font-size: 80%;
+$paragraph-lineheight: 1.6;
+$paragraph-margin-bottom: 1rem;
+$paragraph-text-rendering: optimizeLegibility;
+$lead-font-size: $global-font-size * 1.25;
+$lead-lineheight: 1.6;
+$subheader-lineheight: 1.4;
+$subheader-color: $dark-gray;
+$subheader-font-weight: $global-weight-normal;
+$subheader-margin-top: 0.2rem;
+$subheader-margin-bottom: 0.5rem;
+$stat-font-size: 2.5rem;
+
+// links
+$anchor-color: $scarlet;
+$anchor-color-hover: scale-color($anchor-color, $lightness: 14%);
+$anchor-text-decoration: none;
+$anchor-text-decoration-hover: none;
+
+// hr
+$hr-width: $global-width;
+$hr-border: 1px solid $medium-gray;
+$hr-margin: rem-calc(20) 0;
+
+// lists
+$list-lineheight: $paragraph-lineheight;
+$list-margin-bottom: $paragraph-margin-bottom;
+$list-style-type: disc;
+$list-style-position: outside;
+$list-side-margin: 1.25rem;
+$list-nested-side-margin: 1.25rem;
+
+// blockquotes
+$blockquote-color: $dark-gray;
+$blockquote-padding: rem-calc(9 20 0 19);
+$blockquote-border: 1px solid $medium-gray;
+
+// citations/abbrevs
+$cite-font-size: rem-calc(13);
+$cite-color: $dark-gray;
+$abbr-underline: 1px dotted $black;
