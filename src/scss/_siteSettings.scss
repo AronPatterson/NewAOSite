@@ -36,6 +36,8 @@ $secondary-color: $black;
 
 // TRANSLATOR //
 // rather than renaming these every time Foundation updates, we translate them in this file to our own static variables
+// when Foundation updates, all we have to do is replace what variables were updated
+// this prevents us from having to hunt them down inside the Foundation file
 $ao-font-size: 100%;
 $ao-global-width: rem-calc(1280);
 $ao-body-font-family: "Open Sans", Arial, sans-serif;
@@ -43,6 +45,21 @@ $ao-body-font-color: $deep-red;
 $ao-body-background: $body-background;
 $ao-global-radius: 4px;
 $ao-global-lineheight: 1.5;
+$ao-header-font-family: "Indie Flower", sans-serif;
+$ao-header-font-weight: bold; // normal, bold, bolder
+$ao-header-font-style: normal; // italic, underline
+$ao-body-background: url('../img/bg_underlay.jpg') no-repeat $white;
+$ao-loader-icon: transparent url('../img/svg-loader.svg') no-repeat center center;
+$ao-mouse-outline: $scarlet;
+$ao-grid-columns: 16;
+
+$ao-titlebar-background: $brown;
+$ao-titlebar-color: $white;
+$ao-titlebar-padding: 0.5rem;
+$ao-titlebar-text-font-weight: bold;
+$ao-titlebar-icon-color: $white;
+$ao-titlebar-icon-color-hover: $medium-gray;
+$ao-titlebar-icon-spacing: 0.25rem;
 
 $global-font-size: $ao-font-size;
 $global-width: $ao-global-width;
@@ -78,7 +95,7 @@ $grid-column-alias: 'columns';
 $block-grid-max: 8;
 
 // BODY
-$body-background: url('../img/bg_underlay.jpg') no-repeat $white;
+$body-background: $ao-body-background;
 $body-font-color: $ao-body-font-color;
 $body-font-family: $ao-body-font-family;
 $body-antialiased: true;
@@ -88,9 +105,8 @@ $body-footer-bg: $primary-color url('../img/ftr_bg.png'); // the image format al
 
 // BASE TYPOGRAPHY
 // headers
-$header-font-family: $ao-body-font-family;
-$header-font-weight: $global-weight-normal;
-$header-font-style: normal;
+$header-font-family: $ao-header-font-family;
+$header-font-style: $ao-header-font-style;
 $header-styles: (
   small: (
     'h1': ('font-size': 26),
@@ -157,3 +173,26 @@ $blockquote-border: 1px solid $medium-gray;
 $cite-font-size: rem-calc(13);
 $cite-color: $dark-gray;
 $abbr-underline: 1px dotted $black;
+
+// Title Bar
+$titlebar-background: $ao-titlebar-background;
+$titlebar-color: $ao-titlebar-color;
+$titlebar-padding: $ao-titlebar-padding;
+$titlebar-text-font-weight: $ao-titlebar-text-font-weight;
+$titlebar-icon-color: $ao-titlebar-icon-color;
+$titlebar-icon-color-hover: $ao-titlebar-icon-color-hover;
+$titlebar-icon-spacing: $ao-titlebar-icon-spacing;
+
+// Xy Grid
+
+$xy-grid: true;
+$grid-container: $global-width;
+$grid-columns: $ao-grid-columns;
+$grid-margin-gutters: (
+  small: 0px,
+  medium: 0px
+);
+$grid-padding-gutters: $grid-margin-gutters;
+$grid-container-padding: $grid-padding-gutters;
+$grid-container-max: $global-width;
+$xy-block-grid-max: 8;

@@ -4,6 +4,7 @@ import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
 import gulp          from 'gulp';
+//import mocha         from 'gulp-mocha';
 import rimraf        from 'rimraf';
 import yaml          from 'js-yaml';
 import fs            from 'fs';
@@ -14,7 +15,8 @@ import named         from 'vinyl-named';
 // Load all Gulp plugins into one variable
 const $ = plugins();
 
-// Check for --production flag
+// Check for Production flag
+// Production being turned off will print Source Maps for files
 const PRODUCTION = true;
 
 // Load settings from settings.yml
@@ -24,14 +26,6 @@ function loadConfig() {
   let ymlFile = fs.readFileSync('config.yml', 'utf8');
   return yaml.load(ymlFile);
 }
-
-// Build the "dist" folder by running all of the below tasks
-gulp.task('build',
- gulp.series(clean, gulp.parallel(sass, javascript, images, copy)));
-
-// Build the site, run the server, and watch for file changes
-gulp.task('default',
-  gulp.series('build', server, watch));
 
 // Delete the "dist" folder
 // This happens every time a build starts
@@ -83,7 +77,7 @@ let webpackConfig = {
 // Combine JavaScript into one file
 // In production, the file is minified
 function javascript() {
-  return gulp.src(PATHS.entries)
+  return gulp.src(PATHS.jsdir)
     .pipe(named())
     .pipe($.sourcemaps.init())
     .pipe(webpackStream(webpackConfig, webpack2))
@@ -91,8 +85,35 @@ function javascript() {
       .on('error', e => { console.log(e); })
     ))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe($.concat('app.min.js'))
     .pipe(gulp.dest(PATHS.dist + '/js'));
 }
+
+// Combine all Angular into one file
+// In production, the file is minified
+function angular() {
+  return gulp.src(PATHS.angulardir)
+    .pipe(named())
+    .pipe($.sourcemaps.init())
+    .pipe(webpackStream(webpackConfig, webpack2))
+    .pipe($.if(PRODUCTION, $.uglify()
+      .on('error', e => { console.log(e); })
+    ))
+    .pipe($.concat('angular-app.min.js'))
+    .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+    .pipe(gulp.dest(PATHS.dist + '/angular'));
+}
+
+//function mochaTesting() {
+//  return gulp.src(PATHS.testingdir)
+//    .pipe(mocha({
+//      reporter: 'list',
+//      globals: {
+//        should: require('should')
+//      }
+//    }))
+//    .on('error', e => { console.log(e); });
+//}
 
 // Copy images to the "dist" folder
 // In production, the images are compressed
@@ -112,11 +133,20 @@ function server(done) {
   done();
 }
 
-// Watch for changes to static pages, Sass, and JavaScript
+// Watch for changes to static template pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
   gulp.watch('src/**/*.html').on('all', gulp.series(copy, browser.reload)); // this watches the html content for changes
   gulp.watch('src/scss/**/*.scss').on('all', sass); // SASS for changes
   gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload)); // JS for changes
+  gulp.watch('src/angular/**/*.js').on('all', gulp.series(angular, browser.reload)); // Angular for changes
   gulp.watch('src/img/**/*').on('all', gulp.series(images, browser.reload)); // images for changes
 }
+
+// Build the "dist" folder by running all of the below tasks
+gulp.task('build',
+ gulp.series(clean, gulp.parallel(sass, javascript, angular, images, copy)));
+
+// Build the site, run the server, and watch for file changes
+gulp.task('default',
+  gulp.series('build', server, watch));

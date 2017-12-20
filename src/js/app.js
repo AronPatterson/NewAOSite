@@ -15,7 +15,7 @@ function navScripts() {
 		$( this ).find( 'a' ).addClass( 'active' );
 		$( this ).parents( '.menu-item-has-children' ).children( 'a' ).addClass( 'active' );
 	  }
-	})
+	});
 }
 
 function backToTop() {
@@ -35,7 +35,7 @@ function backToTop() {
 
 function footerScripts() {
 	// Footer Navigation Integration
-	$( '.footNav ul li a' ).addClass( 'align-center' ); // makes sure these are center
+	//$( '.footNav ul li a' ).addClass( 'align-center' ); // makes sure these are center
 
 	// this fixes the Angular "always open mobile" issue so that when you click a link, it closes the Foundation mobile nav
 	$( '#mainNav li a' ).click( function() {
@@ -50,6 +50,7 @@ footerScripts();
 
 // Import Foundation options
 window.$ = $;
+
 //import Foundation from 'foundation-sites';
 // If you want to pick and choose which modules to include, comment out the above and uncomment
 // the line below

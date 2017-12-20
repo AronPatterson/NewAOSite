@@ -18,11 +18,6 @@ body {
 	text-rendering: optimizeLegibility;
 	overflow-x: hidden;
 }
-#top {
-	// sets a maximum width for site, to ensure nothing looks awful on large screens
-	max-width: 2560px;
-	margin: 0 auto;
-}
 
 // SELECTION (selecting text) & PLACEHOLDER (empty field placeholder text, for forms)
 // please do not try to combine these via commas - they need to be their own independent elements
@@ -85,13 +80,17 @@ input[type="submit"] {
 	}
 	@include disable-mouse-outline; // nifty feature that kills outlines for mouse users, but not for keyboard users
 }
-button {
-	@include disable-mouse-outline;
+a {
+	outline-color: $ao-mouse-outline;
+	border-radius: $ao-global-radius*4;
 }
 
 /*/ GLOBAL CONTAINER /*/
 #top {
+	// sets a maximum width for site, to ensure nothing looks awful on large screens
+	max-width: 2560px;
 	min-height: 100%;
+	margin: 0 auto;
 }
 
 // if the user has less than IE9... shame upon them and their houses
@@ -106,44 +105,12 @@ button {
 
 /*/ HEADER /*/
 #navContainer {
-	display: block;
-	position: relative;
-	width: 100%;
-	margin: 0 auto;
+	// display: block;
+	// position: relative;
+	// width: 100%;
+	// margin: 0 auto;
 }
 
-#mainNav {
-	li {
-		@include breakpoint(large) {
-			a {
-				padding: 0;
-				font-family: $header-font-family;
-				font-size: 38px;
-				color: $brown;
-				@include breakpoint(large down) {
-					font-size: 32px;
-				}
-				&::before {
-					content: "";
-					background-color: $brown;
-					width: 12px;
-					height: 32px;
-					margin-left: 16px;
-					margin-right: 10px;
-					@include breakpoint(large down) {
-						height: 28px;
-					}
-				}
-				&:hover {
-					color: $scarlet;
-					&::before {
-						background-color: $scarlet;
-					}
-				}
-			}
-		}
-	}
-}
 
 /*/ MODULES /*/
 
@@ -157,7 +124,6 @@ button {
 	width: 100%;
 	padding-top: 2%;
 	font-size: 20px;
-	font-family: $header-font-family;
 	color: $white;
 	background: $body-footer-bg;
 	p {
@@ -178,11 +144,16 @@ button {
 			color: scale-color($white, $lightness: -20%);
 		}
 	}
-	.menu a {
-		text-shadow: -1px -1px 0 $deep-red, 
-		1px -1px 0 $deep-red, 
-		-1px 1px 0 $deep-red, 
-		1px 1px 0 $deep-red;
+	.menu {
+		justify-content: center;
+		a {
+			justify-content: center;
+			text-align: center;
+			text-shadow: -1px -1px 0 $deep-red, 
+			1px -1px 0 $deep-red, 
+			-1px 1px 0 $deep-red, 
+			1px 1px 0 $deep-red;
+		}
 	}
 }
 

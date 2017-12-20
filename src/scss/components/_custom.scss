@@ -6,11 +6,20 @@
 /*/ HOMEPAGE /*/
 #aronHomeBig {
 	position: absolute;
-	background: transparent url('../img/ajax-loader.gif') no-repeat center center;
+	background: $ao-loader-icon;
 	width: 433px;
 	height: 652px;
 	right: 0;
 	bottom: 0;
+}
+
+.logoArea {
+	h1 {
+		margin: 0;
+	}
+	img {
+		max-width: 75%;
+	}
 }
 
 /*/ FOUNDATION FIXES /*/
@@ -21,10 +30,6 @@
 	}
 	.menu a {
 		width: 100%!important;
-		display: inline-block!important;
-		@include breakpoint(medium down) {
-			display: block!important;
-		}
 	}
 	.dropdown.menu.large-horizontal>li.is-dropdown-submenu-parent>a:after {
 		border-color: $dropdown-arrow-color transparent transparent!important;
@@ -61,6 +66,9 @@
 	#mainNav {
 		@include breakpoint(medium down) {
 			a {
+				width: 100%;
+				text-align: center;
+				border-radius: 0;
 				background-color: $brown;
 				justify-content: center;
 				font-family: $header-font-family;
@@ -74,6 +82,37 @@
 				&:hover {
 					background-color: $scarlet;
 					color: $white;
+				}
+			}
+		}
+		li {
+			@include breakpoint(large) {
+				a {
+					padding: 0;
+					font-family: $ao-header-font-family;
+					font-size: 38px;
+					color: $brown;
+					@include breakpoint(large down) {
+						font-size: 32px;
+					}
+					&::before {
+						display: inline-block;
+						content: "";
+						background-color: $brown;
+						width: 12px;
+						height: 32px;
+						margin-left: 16px;
+						margin-right: 10px;
+						@include breakpoint(large down) {
+							height: 28px;
+						}
+					}
+					&:hover {
+						color: $scarlet;
+						&::before {
+							background-color: $scarlet;
+						}
+					}
 				}
 			}
 		}
@@ -99,9 +138,9 @@
 	}
 	// Interior Pages
 	#contentBox {
-		min-height: 652px;
+		min-height: 600px; // I give it a min-height so pages with little content still fill up enough space
 		margin-top: 6px;
-		padding: 26px 30px 0 30px;
+		padding: 26px 30px 26px 30px;
 		background: $body-content-bg;
 		background-position: center center;
 		background-repeat: repeat;
@@ -187,7 +226,7 @@
 .callout .small-16.medium-8.columns {
 	padding-bottom: 18px;
 	a img {
-		background: transparent url('../img/ajax-loader.gif') no-repeat center center;
+		background: $ao-loader-icon;
 	}
 }
 
@@ -205,7 +244,7 @@
 	z-index: -1;
 }
 
-// keyframes
+// keyframes for cloud animations
 @-webkit-keyframes animateCloud {
 	0% {
 		margin-left: -1000px;
@@ -233,7 +272,7 @@
 	}
 }
 
-// animations
+// actual animations
 .cloud1 {
 	animation: animateCloud 130s linear infinite;
 	transform: scale(0.65);
@@ -259,7 +298,7 @@
 	transform: scale(0.55);
 }
 
-/* OBJECTS */
+// animation objects
 .floatCloud {
 	background: scale-color($tan, $lightness: 65%);
 	box-shadow: 0 10px 8px rgba($black, 0.1);
@@ -301,13 +340,12 @@
 	margin-top: 20px;
 	ul {
 		list-style-type: none;
-		margin-bottom: 0;
+		margin: 0;
 		li {
 			display: inline-block;
 			width: 54px;
 			height: 54px;
 			margin-right: 10px;
-			margin-bottom: 10px;
 			padding-top: 6px;
 			border-radius: 6px;
 			text-align: center;
@@ -318,7 +356,7 @@
 				box-shadow: -1px 1px 1px -1px rgba($black,.5);
 			}
 			&.liLogo {
-				background-color: #0097bd;
+				background-color: #4968a8;
 			}
 			&.gitLogo {
 				background-color: #60b044;
@@ -327,9 +365,9 @@
 				background-color: $scarlet;
 			}
 			a {
-				color: $tan;
+				color: $white;
 				&:hover {
-					color: $white;
+					color: $tan;
 				}
 			}
 		}
