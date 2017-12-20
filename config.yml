@@ -30,5 +30,10 @@ PATHS:
     - "node_modules/foundation-sites/scss"
     - "node_modules/motion-ui/src"
   # Paths to JavaScript entry points for webpack to bundle modules
-  entries:
+  jsdir:
     - "src/js/app.js"
+  angulardir:
+    - "src/angular/ang-foundation.js"
+    - "src/angular/angular-app.js"
+  testingdir:
+    - "src/testing"

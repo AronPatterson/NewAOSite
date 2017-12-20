@@ -1,51 +1,150 @@
-<!doctype<!doctype html>
-<html class="no-js" lang="en">
+<!doctype html>
+<html id="top" class="no-js" lang="en" ng-app="aoOnline">
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>AroOnline; Front-End Web Developer, Custom Sites, SEO; Duluth, MN</title>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
-	<link rel="stylesheet" href="../css/app.css" />
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.7/angular-resource.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
-	<script type="text/javascript" src="../angular/theme-angular.js?ver=38e9ef8c17ede87462b9e9d76b839d63"></script>
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:normal,bold%7CAmaranth:normal,bold" media="all">
-	<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/app.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
+	<script>
+		WebFontConfig = {
+			google: {
+				families: ['Open Sans:normal,bold', 'Indie Flower:normal,bold']
+			},
+			timeout: 2000 // set the timeout to two seconds
+		};
+	</script>
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 	<link href="../img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 </head>
-<body class="home page-template-default page page-id-4">
+<body>
 <!--[if lt IE 9]>
 	<a href="http://browsehappy.com/"><div id="ltie9">
 	Woah buddy! Your browser is a bit out of date, there! It looks like you're using an old version of Internet Explorer. For the best experience on this site, please update your browser!
 	</div></a>
 <![endif]--> 
-<div id="top">
-<header id="navContainer">
-	<div class="row collapse">
-		<section class="small-8 small-offset-4 large-4 large-offset-0 columns text-center logoArea">
+<!-- START: #navContainer -->
+<header id="navContainer" class="grid-container">
+	<div class="grid-x">
+		<section class="small-8 small-offset-4 large-4 large-offset-0 cell text-center logoArea">
 			<a href="/" rel="home"><h1><img src="../img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota"></h1></a>
 		</section>
-		<a class="sr-only" href="#mainContent">Skip to main content</a>
+		<a class="sr-only" href="#mainContent" tabindex="-1">Skip to main content</a>
 		<!-- START: Nav -->
-		<nav class="small-16 large-12 columns align-self-bottom">
+		<nav class="small-16 large-12 cell align-self-bottom">
 			<div class="title-bar" data-responsive-toggle="mainNav" data-hide-for="large" style="display: none;">
 				<button class="menu-icon" type="button" data-toggle=""></button>
 				<div class="title-bar-title" data-toggle="">Navigation</div>
 			</div>
-			<ul id="mainNav" class="menu large-horizontal medium-vertical align-right accordion-menu" data-responsive-menu="accordion large-dropdown medium-accordion" role="tablist" aria-multiselectable="true" data-accordion-menu="doajrq-accordion-menu">
+			<ul id="mainNav" class="menu large-horizontal medium-vertical small-text-center align-right" data-responsive-menu="accordion large-dropdown medium-accordion">
 				<li role="menuitem"><a href="/#/home" tabindex="0">Home</a></li>
 				<li role="menuitem"><a href="/#/about">About</a></li>
 				<!--<li><a href="/#/resume">Resume</a></li>-->
 				<li role="menuitem"><a href="http://aroonline.com/developer-portfolio/">Portfolio</a></li>
-				<li role="menuitem"><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact</a></li>
+				<li role="menuitem"><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true">Contact</a></li>
 			</ul>
 		</nav>
 		<!-- END: /Nav -->
 	</div>
-</header>
-<!-- START: Clouds -->
+</header> <!-- /.grid-container -->
+<!-- END: /#navContainer -->
+<!-- START: #mainContent -->
+<main id="mainContent" role="main" ng-controller="aoContentController">
+	<div class="ng-scope grid-container">
+		<div id="contentBox" class="grid-x ng-scope">
+			<section ng-attr-id="pageId-{{page.id}}" class="small-16 xlarge-12 xxlarge-14 cell" id="pageId-4">
+				<div class="grid-container">
+					<div class="grid-x">
+						<div class="small-16 medium-10 small-order-2 medium-order-1 cell">
+							<h2 class="small-text-center">Welcome, friend! {{'yet' + '!'}}</h2>
+							<p>My name is Aron Patterson, and I’m a Front End Web Developer from Duluth, Minnesota. I love building websites, whether that website is for a small business or a giant corporate empire ready to buy out my local Starbucks – I’ve done it all. Whether you’re a business seeking out your place on the world wide web, or a potential employer looking to hire an experienced&nbsp;developer, I will help you achieve your&nbsp;goals! Feel free to <a href="http://aroonline.com/#/about">learn more about me</a>;&nbsp;check out a small batch&nbsp;of my <a href="http://aroonline.com/developer-portfolio/">custom-developed sites</a>;&nbsp;or cut out the middle man&nbsp;by&nbsp;<a data-open="contactForm">contacting me directly</a>.</p>
+							<p>In addition to being a seasoned web developer, I’ve worn many hats in the past, including: web designer; SEO expert; online marketer; client trainer; and development&nbsp;project manager. That means if you’re&nbsp;looking for a full-rounded web developer who can hit the ground running, you’ve found&nbsp;one of the best.</p>
+							<h3>Current Dev Toolset</h3>
+							<div class="grid-x align-center" ng-repeat="site in portfolio">
+								<div class="small-16 medium-14 large-11 cell callout secondary text-center">
+									<h3 class="text-center">{{site.name}}</h3>
+									<div class="grid-x">
+										<div class="small-16 medium-8 cell" ng-if="site.desktopLink">
+											<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
+												<img ng-src="../img/portfolio/desktop/site_{{site.portId}}.png" alt="{{site.name}} Desktop View">
+											</a>
+											<br />
+											<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
+												<span><i class="fa fa-desktop" aria-hidden="true"></i> Desktop screenshot</span>
+											</a>
+										</div>
+										<div class="small-16 medium-8 cell" ng-if="site.mobileLink">
+											<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_cy" aria-haspopup="true"><img ng-src="../img/portfolio/mobile/site_{{site.portId}}.png" alt="{{site.name}} Mobile View"></a><br />
+											<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_{{site.portId}}" aria-haspopup="true" tabindex="0">
+												<span><i class="fa fa-mobile" aria-hidden="true"></i> Mobile screenshot</span>
+											</a>
+										</div>
+									</div>
+									<div class="grid-x" ng-if="site.liveURL">
+										<div class="small-16 cell">
+											<a ng-href="{{site.liveURL}}" target="_blank">
+												<span><i class="fa fa-external-link" aria-hidden="true"></i> View live site</span>
+											</a>
+										</div>
+									</div>
+								</div>
+							</div>
+							<ul>
+								<li>HTML5</li>
+								<li>SASS/CSS3</li>
+								<li>Foundation 6/Bootstrap 3</li>
+								<li>JavaScript/jQuery</li>
+								<li>Gulp</li>
+								<li>Adobe Creative Suite</li>
+							</ul>
+						</div>
+						<aside class="small-16 medium-6 small-order-1 medium-order-2 cell text-center homeSide">
+							<img ng-src="../img/content_responsive.png" src="../img/content_responsive.png" />
+							<h2>I build <span>responsive</span>.</h2>
+							<h3>I build <span>custom</span>.</h3>
+							<br>
+							<h2><span>SEO</span> pro.</h2>
+							<h3><span>WordPress</span> expert.</h3>
+							<h4 class="show-for-xlarge">Great taste in t-shirts --&gt;</h4>
+						</aside>
+					</div>
+				</div> <!-- /.grid-container -->
+			</section>
+		</div>
+		<div id="aronHomeBig" class="show-for-xlarge noPrint ng-scope">
+			<img alt="Web Developer Aron Patterson Posing Awkwardly" src="../img/home_aron-horrible-pose.png">
+		</div>
+	</div>
+</main>
+<!-- END: #mainContent -->
+<!-- START: #siteFooter -->
+<footer id="siteFooter">
+	<div role="navigation grid-container">
+		<div class="footNav noPrint grid-x" role="navigation">
+			<ul class="small-16 cell menu">
+				<li><a href="/#/home">Home</a></li>
+				<li><a href="/#/about">About</a></li>
+				<!--<li><a href="/#/resume">Resume</a></li>-->
+				<li><a href="/developer-portfolio/">Portfolio</a></li>
+				<li><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact Me</a></li>
+			</ul>
+			<section id="socialMedia" class="small-16 cell text-center noPrint">
+				<ul>
+					<li class="liLogo"><a href="http://linkedin.com/in/aronpatterson" target="_blank"><span class="fa fa-linkedin fa-2x"></span></a></li>
+					<li class="gitLogo"><a href="https://github.com/AronPatterson" target="_blank"><span class="fa fa-git-square fa-2x"></span></a></li>
+					<li class="conLogo"><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0"><span class="fa fa-envelope fa-2x"></span></a></li>
+				</ul>
+			</section>
+			<section class="small-16 cell text-center">
+				<p>Copyright &copy;2017 Aron Patterson<br />
+				AroOnline Web Design &amp; Development</p>
+			</section>
+		</div>
+	</div> <!-- /.grid-container -->
+</footer>
+<!-- END: /#siteFooter -->
+<!-- START: #cloudWrapper -->
 <div id="cloudWrapper" class="noPrint" aria-hidden="true">
     <div class="cloud1">
         <div class="floatCloud"></div>
@@ -63,72 +162,19 @@
         <div class="floatCloud"></div>
     </div>
 </div>
-<!-- END: /Clouds -->
-<!-- START: Main Content -->
-<div id="mainContent" role="main">
-	<div ui-view="" class="ng-scope">
-		<div id="contentBox" class="row ng-scope">
-			<section ng-attr-id="pageId-{{page.id}}" class="small-16 xlarge-12 xxlarge-14 columns" id="pageId-4">
-				<div class="row">
-					<div class="small-16 medium-10 small-order-2 medium-order-1 column">
-						<h2 class="small-text-center">Welcome, friend!</h2>
-						<div ng-bind-html="page.content.rendered | to_trusted" class="ng-binding"><p>My name is Aron Patterson, and I’m a Front End Web Developer from Duluth, Minnesota. I love building websites, whether that website is for a small business or a giant corporate empire ready to buy out my local Starbucks – I’ve done it all. Whether you’re a business seeking out your place on the world wide web, or a potential employer looking to hire an experienced&nbsp;developer, I will help you achieve your&nbsp;goals! Feel free to <a href="http://aroonline.com/#/about">learn more about me</a>;&nbsp;check out a small batch&nbsp;of my <a href="http://aroonline.com/developer-portfolio/">custom-developed sites</a>;&nbsp;or cut out the middle man&nbsp;by&nbsp;<a data-open="contactForm">contacting me directly</a>.</p>
-						<p>In addition to being a seasoned web developer, I’ve worn many hats in the past, including: web designer; SEO expert; online marketer; client trainer; and development&nbsp;project manager. That means if you’re&nbsp;looking for a full-rounded web developer who can hit the ground running, you’ve found&nbsp;one of the best.</p>
-						<h3>Current Dev Toolset</h3>
-						<ul>
-						<li>HTML5</li>
-						<li>SASS/CSS3</li>
-						<li>Foundation 6/Bootstrap 3</li>
-						<li>JavaScript/jQuery</li>
-						<li>Gulp</li>
-						<li>Adobe Creative Suite</li>
-						</ul>
-						</div>
-					</div>
-					<aside class="small-16 medium-6 small-order-1 medium-order-2 column text-center homeSide">
-						<img ng-src="../img/content_responsive.png" src="../img/content_responsive.png" />
-						<h2>I build <span>responsive</span>.</h2>
-						<h3>I build <span>custom</span>.</h3>
-						<br>
-						<h2><span>SEO</span> pro.</h2>
-						<h3><span>WordPress</span> expert.</h3>
-						<h4 class="show-for-xlarge">Great taste in t-shirts --&gt;</h4>
-					</aside>
-				</div>
-			</section>
-		</div>
-		<div id="aronHomeBig" class="show-for-xlarge noPrint ng-scope">
-			<img alt="Web Developer Aron Patterson Posing Awkwardly" src="../img/home_aron-horrible-pose.png">
-		</div>
-	</div>
-</div>
-</div>
-<!-- END: /Main Content -->
-<!-- START: Site Footer -->
-<footer id="siteFooter">
-	<div class="row" role="navigation">
-		<div class="small-16 columns footNav noPrint" role="navigation">
-			<ul class="menu align-center">
-				<li><a class="align-center" href="/#/home">Home</a></li>
-				<li><a class="align-center" href="/#/about">About</a></li>
-				<!--<li><a class="align-center" href="/#/resume">Resume</a></li>-->
-				<li><a class="align-center" href="http://aroonline.com/developer-portfolio/">Portfolio</a></li>
-				<li><a class="align-center" data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact Me</a></li>
-			</ul>
-			<section id="socialMedia" class="small-16 text-center noPrint">
-				<ul>
-					<li class="liLogo"><a href="http://linkedin.com/in/aronpatterson" target="_blank"><span class="fa fa-linkedin fa-2x"></span></a></li>
-					<li class="conLogo"><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0"><span class="fa fa-envelope fa-2x"></span></a></li>
-				</ul>
-			</section>
-			<p class="text-center">Copyright &copy;2017 Aron Patterson<br>
-			AroOnline Web Design &amp; Development</p>
-		</div>
-	</div> <!-- .row -->
-</footer>
-<!-- END: /Site Footer -->
-<a href="top" class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
-<script type="text/javascript" src="../js/app.js"></script>
+<!-- END: /#cloudWrapper -->
+<a href="#top" class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js" integrity="sha256-bs1GvtqRJyWn3a6f6BiFOdX9LK86qR4UuPKmLr5JXTE=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular-animate.min.js" integrity="sha256-VulA4dmD9HruM3uS9L+6Y93ku8d6mAf/ibqslissaKQ=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.7/angular-touch.min.js" integrity="sha256-EDVag1/nKoY0cLw7VrAFhNrpFseDaOqvWXtdZ65Wt0M=" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.7/angular-resource.min.js" integrity="sha256-O+UhBoQs3ekI/1BAQSuuhTUSo6dgdtxkM3I5KXKuo7k=" crossorigin="anonymous"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular-route.min.js" integrity="sha256-8bgkuoYyDpASEZz5bIftIpnq9jPDnui2P34vD6i9Ae4=" crossorigin="anonymous"></script>
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../angular/angular-app.min.js"></script>
+<script type="text/javascript" src="../js/app.min.js"></script>
 </body>
 </html>
