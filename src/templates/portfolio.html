@@ -1,0 +1,29 @@
+<div class="grid-x align-center" ng-repeat="site in portfolio">
+	<div class="small-16 medium-14 large-11 cell callout secondary text-center">
+		<h3 class="text-center">{{site.name}}</h3>
+		<div class="grid-x">
+			<div class="small-16 medium-8 cell" ng-if="site.desktopLink">
+				<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
+					<img ng-src="../img/portfolio/desktop/site_{{site.portId}}.png" alt="{{site.name}} Desktop View">
+				</a>
+				<br />
+				<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
+					<span><i class="fa fa-desktop" aria-hidden="true"></i> View desktop</span>
+				</a>
+			</div>
+			<div class="small-16 medium-8 cell" ng-if="site.mobileLink">
+				<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_cy" aria-haspopup="true"><img ng-src="../img/portfolio/mobile/site_{{site.portId}}.png" alt="{{site.name}} Mobile View"></a><br />
+				<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_{{site.portId}}" aria-haspopup="true" tabindex="0">
+					<span><i class="fa fa-mobile" aria-hidden="true"></i> View mobile</span>
+				</a>
+			</div>
+		</div>
+		<div class="grid-x" ng-if="site.liveURL">
+			<div class="small-16 cell">
+				<a ng-href="{{site.liveURL}}" target="_blank">
+					<span><i class="fa fa-external-link" aria-hidden="true"></i> View live site</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

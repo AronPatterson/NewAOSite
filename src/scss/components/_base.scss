@@ -85,14 +85,6 @@ a {
 	border-radius: $ao-global-radius*4;
 }
 
-/*/ GLOBAL CONTAINER /*/
-#top {
-	// sets a maximum width for site, to ensure nothing looks awful on large screens
-	max-width: 2560px;
-	min-height: 100%;
-	margin: 0 auto;
-}
-
 // if the user has less than IE9... shame upon them and their houses
 #ltie9 {
 	display: block;

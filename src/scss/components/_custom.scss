@@ -39,12 +39,10 @@
 	}
 }
 @if $global-flexbox == true {
-	.title-bar {
-		visibility: hidden;
+	.titleBarToggle {
+		width: 100%;
+		text-align: center;
 		justify-content: center;
-		@include breakpoint(medium down) {
-			visibility: visible!important;
-		}
 	}
 	.menu {
 		a {
@@ -64,6 +62,7 @@
 		1px 1px 0 $deep-red;
 	}
 	#mainNav {
+		font-weight: bolder;
 		@include breakpoint(medium down) {
 			a {
 				width: 100%;
@@ -125,6 +124,8 @@
 #mainContent {
 	position: relative;
 	padding: 0 0;
+    margin: 0 auto;
+    max-width: $ao-global-width*2;
 	background: url('../img/ftr_aron-trees.png') bottom center repeat-x;
 	a {
 		@include disable-mouse-outline;
@@ -191,6 +192,8 @@
 
 // Home
 .homeSide {
+	padding-left: 20px;
+	padding-right: 20px;
 	h2,h3 {
 		span {
 			color: $scarlet;

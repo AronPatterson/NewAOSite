@@ -5,7 +5,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<title>AroOnline; Front-End Web Developer, Custom Sites, SEO; Duluth, MN</title>
+	<base href="/">
 	<link rel="stylesheet" type="text/css" href="../css/app.css" />
+	<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js" integrity="sha256-bs1GvtqRJyWn3a6f6BiFOdX9LK86qR4UuPKmLr5JXTE=" crossorigin="anonymous"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/webfont/1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script>
 	<script>
 		WebFontConfig = {
@@ -28,14 +30,16 @@
 <header id="navContainer" class="grid-container">
 	<div class="grid-x">
 		<section class="small-8 small-offset-4 large-4 large-offset-0 cell text-center logoArea">
-			<a href="/" rel="home"><h1><img src="../img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota"></h1></a>
+			<a href="/" rel="home"><h1><img ng-src="../img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota"></h1></a>
 		</section>
 		<a class="sr-only" href="#mainContent" tabindex="-1">Skip to main content</a>
 		<!-- START: Nav -->
 		<nav class="small-16 large-12 cell align-self-bottom">
-			<div class="title-bar" data-responsive-toggle="mainNav" data-hide-for="large" style="display: none;">
-				<button class="menu-icon" type="button" data-toggle=""></button>
-				<div class="title-bar-title" data-toggle="">Navigation</div>
+			<div class="title-bar" data-responsive-toggle="mainNav" data-hide-for="large">
+				<div class="titleBarToggle" data-toggle="">
+					<button class="menu-icon" type="button"></button>
+					<div class="title-bar-title">Navigation</div>
+				</div>
 			</div>
 			<ul id="mainNav" class="menu large-horizontal medium-vertical small-text-center align-right" data-responsive-menu="accordion large-dropdown medium-accordion">
 				<li role="menuitem"><a href="/#/home" tabindex="0">Home</a></li>
@@ -50,46 +54,18 @@
 </header> <!-- /.grid-container -->
 <!-- END: /#navContainer -->
 <!-- START: #mainContent -->
-<main id="mainContent" role="main" ng-controller="aoContentController">
-	<div class="ng-scope grid-container">
-		<div id="contentBox" class="grid-x ng-scope">
+<main id="mainContent" role="main" ng-controller="PortfolioCtrl">
+	<div class="grid-container">
+		<div id="contentBox" class="grid-x">
 			<section ng-attr-id="pageId-{{page.id}}" class="small-16 xlarge-12 xxlarge-14 cell" id="pageId-4">
 				<div class="grid-container">
 					<div class="grid-x">
 						<div class="small-16 medium-10 small-order-2 medium-order-1 cell">
+							<div ng-view></div>
 							<h2 class="small-text-center">Welcome, friend! {{'yet' + '!'}}</h2>
 							<p>My name is Aron Patterson, and I’m a Front End Web Developer from Duluth, Minnesota. I love building websites, whether that website is for a small business or a giant corporate empire ready to buy out my local Starbucks – I’ve done it all. Whether you’re a business seeking out your place on the world wide web, or a potential employer looking to hire an experienced&nbsp;developer, I will help you achieve your&nbsp;goals! Feel free to <a href="http://aroonline.com/#/about">learn more about me</a>;&nbsp;check out a small batch&nbsp;of my <a href="http://aroonline.com/developer-portfolio/">custom-developed sites</a>;&nbsp;or cut out the middle man&nbsp;by&nbsp;<a data-open="contactForm">contacting me directly</a>.</p>
 							<p>In addition to being a seasoned web developer, I’ve worn many hats in the past, including: web designer; SEO expert; online marketer; client trainer; and development&nbsp;project manager. That means if you’re&nbsp;looking for a full-rounded web developer who can hit the ground running, you’ve found&nbsp;one of the best.</p>
 							<h3>Current Dev Toolset</h3>
-							<div class="grid-x align-center" ng-repeat="site in portfolio">
-								<div class="small-16 medium-14 large-11 cell callout secondary text-center">
-									<h3 class="text-center">{{site.name}}</h3>
-									<div class="grid-x">
-										<div class="small-16 medium-8 cell" ng-if="site.desktopLink">
-											<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
-												<img ng-src="../img/portfolio/desktop/site_{{site.portId}}.png" alt="{{site.name}} Desktop View">
-											</a>
-											<br />
-											<a data-open="bpModalDesktop_{{site.portId}}" aria-controls="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
-												<span><i class="fa fa-desktop" aria-hidden="true"></i> Desktop screenshot</span>
-											</a>
-										</div>
-										<div class="small-16 medium-8 cell" ng-if="site.mobileLink">
-											<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_cy" aria-haspopup="true"><img ng-src="../img/portfolio/mobile/site_{{site.portId}}.png" alt="{{site.name}} Mobile View"></a><br />
-											<a data-open="bpModalMobile_{{site.portId}}" aria-controls="bpModalMobile_{{site.portId}}" aria-haspopup="true" tabindex="0">
-												<span><i class="fa fa-mobile" aria-hidden="true"></i> Mobile screenshot</span>
-											</a>
-										</div>
-									</div>
-									<div class="grid-x" ng-if="site.liveURL">
-										<div class="small-16 cell">
-											<a ng-href="{{site.liveURL}}" target="_blank">
-												<span><i class="fa fa-external-link" aria-hidden="true"></i> View live site</span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
 							<ul>
 								<li>HTML5</li>
 								<li>SASS/CSS3</li>
@@ -112,14 +88,14 @@
 				</div> <!-- /.grid-container -->
 			</section>
 		</div>
-		<div id="aronHomeBig" class="show-for-xlarge noPrint ng-scope">
-			<img alt="Web Developer Aron Patterson Posing Awkwardly" src="../img/home_aron-horrible-pose.png">
+		<div id="aronHomeBig" class="show-for-xlarge noPrint">
+			<img alt="Web Developer Aron Patterson Posing Awkwardly" ng-src="../img/home_aron-horrible-pose.png">
 		</div>
 	</div>
 </main>
 <!-- END: #mainContent -->
 <!-- START: #siteFooter -->
-<footer id="siteFooter">
+<footer id="siteFooter" ng-controller="ModalCtrl">
 	<div role="navigation grid-container">
 		<div class="footNav noPrint grid-x" role="navigation">
 			<ul class="small-16 cell menu">
@@ -127,7 +103,7 @@
 				<li><a href="/#/about">About</a></li>
 				<!--<li><a href="/#/resume">Resume</a></li>-->
 				<li><a href="/developer-portfolio/">Portfolio</a></li>
-				<li><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact Me</a></li>
+				<li><a ng-click="open()" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact Me</a></li>
 			</ul>
 			<section id="socialMedia" class="small-16 cell text-center noPrint">
 				<ul>
@@ -164,15 +140,16 @@
 </div>
 <!-- END: /#cloudWrapper -->
 <a href="#top" class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+<script type="text/ng-template" id="myModalContent">
+	<h3>I'm a modal!</h3>
 
+	<button class="button" ng-click="openNested()">Open nested</button>
+	<button class="button" ng-click="ok()">OK</button>
+	<button ng-click="cancel()" class="close-button" aria-label="Close reveal" type="button">
+	    <span aria-hidden="true">&times;</span>
+	</button>
+</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular.min.js" integrity="sha256-bs1GvtqRJyWn3a6f6BiFOdX9LK86qR4UuPKmLr5JXTE=" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular-animate.min.js" integrity="sha256-VulA4dmD9HruM3uS9L+6Y93ku8d6mAf/ibqslissaKQ=" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-touch/1.6.7/angular-touch.min.js" integrity="sha256-EDVag1/nKoY0cLw7VrAFhNrpFseDaOqvWXtdZ65Wt0M=" crossorigin="anonymous"></script>
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-resource/1.6.7/angular-resource.min.js" integrity="sha256-O+UhBoQs3ekI/1BAQSuuhTUSo6dgdtxkM3I5KXKuo7k=" crossorigin="anonymous"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.7/angular-route.min.js" integrity="sha256-8bgkuoYyDpASEZz5bIftIpnq9jPDnui2P34vD6i9Ae4=" crossorigin="anonymous"></script>
-
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../angular/angular-app.min.js"></script>
 <script type="text/javascript" src="../js/app.min.js"></script>

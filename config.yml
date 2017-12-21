@@ -33,7 +33,13 @@ PATHS:
   jsdir:
     - "src/js/app.js"
   angulardir:
-    - "src/angular/ang-foundation.js"
+    - "src/angular/angular-sanitize.js"
+    - "src/angular/angular-animate.js"
+    - "src/angular/angular-loader.js"
+    - "src/angular/angular-route.js"
+    - "src/angular/angular-touch.js"
+    - "src/angular/angular-resource.js"
+    - "src/angular/angular-foundation.js"
     - "src/angular/angular-app.js"
   testingdir:
     - "src/testing"

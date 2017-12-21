@@ -1,0 +1,6 @@
+	<div id="contentBox" class="row">
+		<section ng-attr-id="pageId-{{page.id}}" class="small-16 columns">
+				<h2>{{page.title.rendered}}</h2>
+				<div ng-bind-html="page.content.rendered | to_trusted"></div>
+		</section>
+	</div>
