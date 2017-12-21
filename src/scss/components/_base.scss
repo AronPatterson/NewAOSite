@@ -68,6 +68,14 @@ h2, h3, h4, h5, h6 {
 	}
 }
 
+html[data-whatinput="mouse"] {
+	#mainNav {
+		li a, li a::focus {
+			@include disable-mouse-outline;
+		}
+	}
+}
+
 input[type="submit"] {
 	position: relative;
 	@include button(false, $scarlet, $brown, $white, solid);

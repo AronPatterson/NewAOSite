@@ -1,10 +1,13 @@
-describe( 'aoContentController', function() {
+'use strict';
 
-	beforeEach( module('aoOnline') );
+var expect  = require('chai').expect;
+var should = require('chai').should();
+var request = require('request');
 
-	it('should create a Portfolio with 8 entries', inject(function($controller) {
-		var scope = {};
-		var ctrl = $controller('PhoneListController', {$scope: scope});
-		expect(scope.phones.length).toBe(8);
-	}));
+it('Body should have content', function(done) {
+    request('http://localhost:8000/#!/portfolio' , function(error, response, body) {
+        expect(body).to.not.equal('');
+//        expect($scope.portfolio.length).toBe(8);
+        done();
+    });
 });

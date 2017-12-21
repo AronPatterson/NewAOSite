@@ -4,7 +4,7 @@ import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
 import gulp          from 'gulp';
-//import mocha         from 'gulp-mocha';
+import mocha         from 'gulp-mocha';
 import rimraf        from 'rimraf';
 import yaml          from 'js-yaml';
 import fs            from 'fs';
@@ -99,21 +99,22 @@ function angular() {
     .pipe($.if(PRODUCTION, $.uglify()
       .on('error', e => { console.log(e); })
     ))
-    .pipe($.concat('angular-app.min.js'))
+    .pipe($.concat('ao-angular-app.min.js'))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-    .pipe(gulp.dest(PATHS.dist + '/angular'));
+    .pipe(gulp.dest(PATHS.dist + '/angular'))
+    .pipe(browser.reload({ stream: true }));
 }
 
-//function mochaTesting() {
-//  return gulp.src(PATHS.testingdir)
-//    .pipe(mocha({
-//      reporter: 'list',
-//      globals: {
-//        should: require('should')
-//      }
-//    }))
-//    .on('error', e => { console.log(e); });
-//}
+function mochaTesting() {
+  return gulp.src(PATHS.testingdir)
+    .pipe(mocha({
+      reporter: 'list',
+      globals: {
+        should: require('should')
+      }
+    }))
+    .on('error', e => { console.log(e); });
+}
 
 // Copy images to the "dist" folder
 // In production, the images are compressed
@@ -128,7 +129,7 @@ function images() {
 // Start a server with BrowserSync to preview the site in
 function server(done) {
   browser.init({
-    server: PATHS.dist, port: PORT
+    startPath: '/', server: PATHS.dist, port: PORT
   });
   done();
 }
@@ -136,16 +137,16 @@ function server(done) {
 // Watch for changes to static template pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('src/**/*.html').on('all', gulp.series(copy, browser.reload)); // this watches the html content for changes
+  gulp.watch('src/**/*.html').on('all', gulp.series(mochaTesting, copy, browser.reload)); // this watches the html content for changes
   gulp.watch('src/scss/**/*.scss').on('all', sass); // SASS for changes
-  gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload)); // JS for changes
-  gulp.watch('src/angular/**/*.js').on('all', gulp.series(angular, browser.reload)); // Angular for changes
+  gulp.watch('src/js/**/*.js').on('all', gulp.series(mochaTesting, javascript, browser.reload)); // JS for changes
+  gulp.watch('src/angular/**/*.js').on('all', gulp.series(mochaTesting, angular, browser.reload)); // Angular for changes
   gulp.watch('src/img/**/*').on('all', gulp.series(images, browser.reload)); // images for changes
 }
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
- gulp.series(clean, gulp.parallel(sass, javascript, angular, images, copy)));
+ gulp.series(clean, gulp.parallel(sass, mochaTesting, javascript, angular, images, copy)));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
