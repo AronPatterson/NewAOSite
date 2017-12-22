@@ -20,7 +20,7 @@
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha256-NuCn4IvuZXdBaFKJOAcsU2Q3ZpwbdFisd5dux4jkQ5w=" crossorigin="anonymous" />
 	<link href="../img/favicon.ico" rel="shortcut icon" type="image/x-icon">
 </head>
-<body class="{{page.id}}" ng-controller="MainCtrl">
+<body class="{{page.id}}" ng-controller="MainCtrl as mvm">
 <!--[if lt IE 9]>
 	<a href="http://browsehappy.com/"><div id="ltie9">
 	Woah buddy! Your browser is a bit out of date, there! It looks like you're using an old version of Internet Explorer. For the best experience on this site, please update your browser!
@@ -30,7 +30,7 @@
 <header id="navContainer" class="grid-container">
 	<div class="grid-x">
 		<section class="small-8 small-offset-4 large-4 large-offset-0 cell text-center logoArea">
-			<a href="/" rel="home"><h1><img ng-src="{{shortPath}}img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota" /></h1></a>
+			<a href="/" rel="home"><h1><img ng-src="{{mvm.shortPath}}img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota" /></h1></a>
 		</section>
 		<a class="sr-only" href="#mainContent" tabindex="-1">Skip to main content</a>
 		<!-- START: Nav -->

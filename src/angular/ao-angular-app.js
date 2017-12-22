@@ -17,20 +17,23 @@ function stringFunction(obj) { // for debuggin'
 	// ROUTES
 	angular.module('aoOnline')
 	.config(['$routeProvider', '$locationProvider', '$httpProvider',
-		function($routeProvider, $locationProvider, $httpProvider) {
+		function aoconfig($routeProvider, $locationProvider, $httpProvider) {
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
 			$locationProvider.html5Mode(false).hashPrefix('!');
 			$routeProvider.when('/', {
 				templateUrl: '../templates/home.html',
 				controller: 'MainCtrl'
+				controllerAs: 'mvm'
 			})
 			.when('/about', {
 				templateUrl: '../templates/about.html',
-				controller: 'AboutCtrl'
+				controller: 'AboutCtrl',
+				controllerAs: 'vm'
 			})
 			.when('/developer-portfolio', {
 				templateUrl: '../templates/portfolio.html',
-				controller: 'PortfolioCtrl'
+				controller: 'PortfolioCtrl',
+				controllerAs: 'vm'
 			})
 			.otherwise({
 				templateUrl: '../templates/404.html'
@@ -85,16 +88,16 @@ function stringFunction(obj) { // for debuggin'
 (function(){
 	'use strict';
 	angular.module('aoOnline')
-	.controller('MainCtrl', ['$scope', '$http', 'shortcutSettings', 'aoGenFunctions', MainCtrl])
-	.controller('HomeCtrl', ['$scope', HomeCtrl])
-	.controller('AboutCtrl', ['$scope', AboutCtrl])
+	.controller('MainCtrl', MainCtrl)
+	.controller('HomeCtrl', HomeCtrl)
+	.controller('AboutCtrl', AboutCtrl)
 	.controller('PortfolioCtrl', PortfolioCtrl)
-	.controller('ModalCtrl', ['$scope', ModalCtrl]);
+	.controller('ModalCtrl', ModalCtrl);
 	// our Main Controller holds the General Settings of ALL controllers
-	function MainCtrl($scope, $http, shortcutSettings, aoGenFunctions) {
-		var vm = this;
-		$scope.shortPath = shortcutSettings.shortPath;
-		$scope.loading = true;
+	function MainCtrl() {
+		var mvm = this; // main view model
+		mvm.shortPath = shortcutSettings.shortPath;
+		mvm.loading = true;
 		$http.get('/')
 		.then(
 			function(data) {
@@ -108,17 +111,20 @@ function stringFunction(obj) { // for debuggin'
 			}
 		);
 	}
-	function HomeCtrl($scope) {
-		$scope.title = 'I\'m in home';
+	function HomeCtrl() {
+		var vm = this; // view model
+		vm.title = 'I\'m in home';
 	}
-	function AboutCtrl($scope) {
-		$scope.title = 'I\'m in about';
+	function AboutCtrl() {
+		var vm = this; // view model
+		vm.title = 'I\'m in about';
 	}
-	function ModalCtrl($scope) {
-		$scope.title = 'I\'m a Modal';
+	function ModalCtrl() {
+		var vm = this; // view model
+		vm.title = 'I\'m a Modal';
 	}
 	function PortfolioCtrl() {
-		var vm = this;
+		var vm = this; // view model
 		vm.portfolio = [{
 			name: 'Cruisers Yachts',
 			portId: 'cy',

@@ -1,11 +1,11 @@
-<div ng-controller="PortfolioCtrl as portfolio">
-	<div class="grid-x align-center portfolioSite" ng-repeat="site in portfolio">
+<div ng-controller="PortfolioCtrl as vm">
+	<div class="grid-x align-center portfolioSite" ng-repeat="site in vm.portfolio">
 		<div class="small-16 medium-14 large-11 cell callout secondary text-center">
 			<h3 class="text-center">{{site.name}}</h3>
 			<div class="grid-x">
 				<div class="small-16 medium-8 cell" ng-if="site.desktopLink">
 					<a ng-href="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
-						<img ng-src="{{shortPath}}img/portfolio/desktop/site_{{site.portId}}.png" ng-alt="{{site.name}} Desktop View">
+						<img ng-src="{{mvm.shortPath}}img/portfolio/desktop/site_{{site.portId}}.png" ng-alt="{{site.name}} Desktop View">
 					</a>
 					<br />
 					<a ng-href="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
@@ -13,7 +13,7 @@
 					</a>
 				</div>
 				<div class="small-16 medium-8 cell" ng-if="site.mobileLink">
-					<a ng-href="bpModalMobile_{{site.portId}}" aria-haspopup="true"><img ng-src="{{shortPath}}img/portfolio/mobile/site_{{site.portId}}.png" ng-alt="{{site.name}} Mobile View"></a><br />
+					<a ng-href="bpModalMobile_{{site.portId}}" aria-haspopup="true"><img ng-src="{{mvm.shortPath}}img/portfolio/mobile/site_{{site.portId}}.png" ng-alt="{{site.name}} Mobile View"></a><br />
 					<a ng-href="bpModalMobile_{{site.portId}}" aria-haspopup="true" tabindex="0">
 						<span><i class="fa fa-mobile" aria-hidden="true"></i> View mobile</span>
 					</a>
