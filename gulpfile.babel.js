@@ -4,6 +4,7 @@ import plugins       from 'gulp-load-plugins';
 import yargs         from 'yargs';
 import browser       from 'browser-sync';
 import gulp          from 'gulp';
+import jshint        from 'jshint';
 import mocha         from 'gulp-mocha';
 import rimraf        from 'rimraf';
 import yaml          from 'js-yaml';
@@ -19,7 +20,7 @@ const $ = plugins();
 // Production being turned off will print Source Maps for files
 const PRODUCTION = true;
 
-// Load settings from settings.yml
+// Load settings from config.yml
 const { COMPATIBILITY, PORT, UNCSS_OPTIONS, PATHS } = loadConfig();
 
 function loadConfig() {
@@ -80,6 +81,7 @@ function javascript() {
   return gulp.src(PATHS.jsdir)
     .pipe(named())
     .pipe($.sourcemaps.init())
+    .pipe($.jshint())
     .pipe(webpackStream(webpackConfig, webpack2))
     .pipe($.if(PRODUCTION, $.uglify()
       .on('error', e => { console.log(e); })
@@ -113,7 +115,6 @@ function mochaTesting() {
         should: require('should')
       }
     }))
-    .on('error', e => { console.log(e); });
 }
 
 // Copy images to the "dist" folder

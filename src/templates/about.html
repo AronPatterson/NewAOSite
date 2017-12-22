@@ -1,9 +1,9 @@
 <div class="grid-x">
 	<section ng-attr-id="pageId-{{page.id}}" class="small-16 large-12 small-order-2 large-order-1 cell">
 			<h2>{{page.title.rendered}}</h2>
-			<div ng-bind-html="page.content.rendered | to_trusted"></div>aa
+			<div></div><!-- ng-bind-html="page.content.rendered | to_trusted" -->
 	</section>
 	<aside class="small-16 large-4 small-order-1 large-order-2 cell text-center">
-		<img src="{{shortPath}}img/content_aron-about.jpg" alt="Smiling Aron Looking Mildly Professional" />
+		<img ng-src="../img/content_aron-about.jpg" alt="Smiling Aron Looking Mildly Professional" />
 	</aside>
 </div>

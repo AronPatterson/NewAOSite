@@ -1,6 +1,6 @@
 <!doctype html>
 <html id="top" class="no-js" lang="en" ng-app="aoOnline">
-<head>
+<head ng-csp>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -55,9 +55,8 @@
 <!-- END: /#navContainer -->
 <!-- START: #mainContent -->
 <main id="mainContent" role="main" ng-controller="MainCtrl">
-	<div class="grid-container">
-		<div id="contentBox" ng-view></div>
-	</div>
+	<loading></loading>
+	<div id="contentBox" class="grid-container" ng-view></div>
 </main>
 <!-- END: #mainContent -->
 <!-- START: #siteFooter -->
