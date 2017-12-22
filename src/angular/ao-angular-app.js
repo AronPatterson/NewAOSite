@@ -1,3 +1,4 @@
+// MAIN ANGULAR SETUP
 (function(){
 	angular.module('aoOnline', [
 		'mm.foundation',
@@ -7,7 +8,9 @@
 		'ngAnimate'
 	]);
 })();
-
+function stringFunction(obj) { // for debuggin'
+	return JSON.stringify(obj, null, 4);
+}
 // ROUTES
 (function(){
 	'use strict';
@@ -36,7 +39,7 @@
 	]);
 })();
 
-// LOADER
+// DIRECTIVES
 (function(){
 	'use strict';
 
@@ -62,16 +65,19 @@
 })();
 
 
-
 // FACTORIES
 (function(){
 	'use strict';
 	angular.module('aoOnline')
-	.factory('genSettings', genSettings);
-	function genSettings() {
+	.factory('shortcutSettings', shortcutSettings)
+	.factory('aoGenFunctions', aoGenFunctions);
+	function shortcutSettings() {
 		return {
 			shortPath: '../'
 		}
+	}
+	function aoGenFunctions() {
+		return {}
 	}
 })();
 
@@ -79,38 +85,37 @@
 (function(){
 	'use strict';
 	angular.module('aoOnline')
-	.controller('MainCtrl', ['$scope', '$http', MainCtrl])
-	.controller('HomeCtrl', HomeCtrl)
-	.controller('AboutCtrl', AboutCtrl)
+	.controller('MainCtrl', ['$scope', '$http', 'shortcutSettings', 'aoGenFunctions', MainCtrl])
+	.controller('HomeCtrl', ['$scope', HomeCtrl])
+	.controller('AboutCtrl', ['$scope', AboutCtrl])
 	.controller('PortfolioCtrl', PortfolioCtrl)
-	.controller('ModalCtrl', ModalCtrl);
-
-	function MainCtrl($scope, $http) {
-		var vm = this; // view model
-		vm.loading = true;
+	.controller('ModalCtrl', ['$scope', ModalCtrl]);
+	// our Main Controller holds the General Settings of ALL controllers
+	function MainCtrl($scope, $http, shortcutSettings, aoGenFunctions) {
+		var vm = this;
+		$scope.shortPath = shortcutSettings.shortPath;
+		$scope.loading = true;
 		$http.get('/')
 		.then(
 			function(data) {
-				console.log('Working: ' + data);
-				vm.loading = false;
+				var stringData = stringFunction(data);
+				console.log('Working: ' + stringData);
+				$scope.loading = false;
 			},
 			function(err) {
 				console.log('Error: ' + err);
-				vm.loading = false;
+				$scope.loading = false;
 			}
 		);
 	}
-	function HomeCtrl() {
-		var vm = this;
-		vm.title = 'I\'m in home';
+	function HomeCtrl($scope) {
+		$scope.title = 'I\'m in home';
 	}
-	function AboutCtrl() {
-		var vm = this;
-		vm.title = 'I\'m in about';
+	function AboutCtrl($scope) {
+		$scope.title = 'I\'m in about';
 	}
-	function ModalCtrl() {
-		var vm = this;
-		vm.title = 'I\'m in about';
+	function ModalCtrl($scope) {
+		$scope.title = 'I\'m a Modal';
 	}
 	function PortfolioCtrl() {
 		var vm = this;
