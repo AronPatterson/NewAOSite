@@ -85,7 +85,7 @@ $breakpoint-classes: (small medium large xlarge xxlarge);
 
 // THE GRID
 $grid-row-width: $global-width;
-$grid-column-count: 16;
+$grid-column-count: $ao-grid-columns;
 $grid-column-gutter: (
   small: 16px,
   medium: 30px,
