@@ -40,8 +40,8 @@ PATHS:
     - "src/angular/angular-touch.js"
     - "src/angular/angular-resource.js"
     - "src/angular/angular-foundation.js"
-    - "src/angular/ao-angular-app.js"
-    - "src/angular/ao-framework/ao-controllers.js"
+    - "src/angular/controllers/ao-controllers.js"
     - "src/angular/ao-framework/ao-routes.js"
+    - "src/angular/ao-angular-app.js"
   testingdir:
     - "src/testing"

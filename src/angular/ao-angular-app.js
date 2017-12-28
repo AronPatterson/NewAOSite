@@ -6,7 +6,10 @@
 		'ngResource',
 		'ngSanitize',
 		'ngAnimate'
-	]);
+	])
+	.constant('config', {
+		shortPath: '../'
+	});
 })();
 function stringFunction(obj) { // for debuggin'
 	return JSON.stringify(obj, null, 4);
@@ -22,18 +25,18 @@ function stringFunction(obj) { // for debuggin'
 			$locationProvider.html5Mode(false).hashPrefix('!');
 			$routeProvider.when('/', {
 				templateUrl: '../templates/home.html',
-				controller: 'MainCtrl'
+				controller: 'MainCtrl',
 				controllerAs: 'mvm'
 			})
 			.when('/about', {
 				templateUrl: '../templates/about.html',
 				controller: 'AboutCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'MainCtrl'
 			})
 			.when('/developer-portfolio', {
 				templateUrl: '../templates/portfolio.html',
 				controller: 'PortfolioCtrl',
-				controllerAs: 'vm'
+				controllerAs: 'MainCtrl'
 			})
 			.otherwise({
 				templateUrl: '../templates/404.html'
@@ -88,28 +91,29 @@ function stringFunction(obj) { // for debuggin'
 (function(){
 	'use strict';
 	angular.module('aoOnline')
-	.controller('MainCtrl', MainCtrl)
+	.controller('MainCtrl', ['$http', 'config', MainCtrl])
 	.controller('HomeCtrl', HomeCtrl)
 	.controller('AboutCtrl', AboutCtrl)
 	.controller('PortfolioCtrl', PortfolioCtrl)
 	.controller('ModalCtrl', ModalCtrl);
 	// our Main Controller holds the General Settings of ALL controllers
-	function MainCtrl() {
+	function MainCtrl($http, config) {
 		var mvm = this; // main view model
-		mvm.shortPath = shortcutSettings.shortPath;
+		mvm.shortPath = config.shortPath;
 		mvm.loading = true;
-		$http.get('/')
-		.then(
-			function(data) {
-				var stringData = stringFunction(data);
-				console.log('Working: ' + stringData);
-				$scope.loading = false;
-			},
-			function(err) {
-				console.log('Error: ' + err);
-				$scope.loading = false;
-			}
-		);
+		$http({
+			method: 'GET',
+			url: '/'
+		})
+		.then(successCallback, errorCallback);
+		function successCallback(response){
+			mvm.loading = false;
+			console.log('works: ' + stringFunction(response));
+		}
+		function errorCallback(error){
+			mvm.loading = false;
+			console.log('error: ' + error);
+		};
 	}
 	function HomeCtrl() {
 		var vm = this; // view model
