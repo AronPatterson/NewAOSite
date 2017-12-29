@@ -1,31 +1,37 @@
 <div ng-controller="PortfolioCtrl as vm">
-	<div class="grid-x align-center portfolioSite" ng-repeat="site in vm.portfolio">
+	<div class="grid-x align-center portfolioSite" ng-repeat="site in vm.portfolio track by site.portId">
 		<div class="small-16 medium-14 large-11 cell callout secondary text-center">
-			<h3 class="text-center">{{site.name}}</h3>
+			<h3 class="text-center">{{ site.name }}</h3>
 			<div class="grid-x">
 				<div class="small-16 medium-8 cell" ng-if="site.desktopLink">
-					<a ng-href="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
-						<img ng-src="{{mvm.shortPath}}img/portfolio/desktop/site_{{site.portId}}.png" ng-alt="{{site.name}} Desktop View">
-					</a>
+					<a ng-attr-data-open="portModalLg_{{ site.portId }}" aria-haspopup="true">
+						<img ng-src="{{ mvm.shortPath }}img/portfolio/desktop/site_{{ site.portId }}.png" ng-attr-alt="{{ site.name }} Desktop View">
 					<br />
-					<a ng-href="bpModalDesktop_{{site.portId}}" aria-haspopup="true">
 						<span><i class="fa fa-desktop" aria-hidden="true"></i> View desktop</span>
 					</a>
 				</div>
 				<div class="small-16 medium-8 cell" ng-if="site.mobileLink">
-					<a ng-href="bpModalMobile_{{site.portId}}" aria-haspopup="true"><img ng-src="{{mvm.shortPath}}img/portfolio/mobile/site_{{site.portId}}.png" ng-alt="{{site.name}} Mobile View"></a><br />
-					<a ng-href="bpModalMobile_{{site.portId}}" aria-haspopup="true" tabindex="0">
+					<a ng-attr-data-open="portModalSm_{{ site.portId }}" aria-haspopup="true"><img ng-src="{{mvm.shortPath}}img/portfolio/mobile/site_{{ site.portId }}.png" ng-attr-alt="{{ site.name }} Mobile View"><br />
 						<span><i class="fa fa-mobile" aria-hidden="true"></i> View mobile</span>
 					</a>
 				</div>
 			</div>
 			<div class="grid-x" ng-if="site.liveURL">
 				<div class="small-16 cell">
-					<a ng-href="{{site.liveURL}}" target="_blank">
+					<a ng-href="{{ site.liveURL }}" target="_blank">
 						<span><i class="fa fa-external-link" aria-hidden="true"></i> View live site</span>
 					</a>
 				</div>
 			</div>
 		</div>
+
 	</div>
+</div>
+<div class="full reveal" ng-attr-id="portModalLg_{{ site.portId }}" data-reveal>
+	<h1>Awesome. I Have It.</h1>
+	<p class="lead">Your couch. It is mine.</p>
+	<p>I'm a cool paragraph that lives inside of an even cooler modal. Wins!</p>
+	<button class="close-button" data-close aria-label="Close modal" type="button">
+	<span aria-hidden="true">&times;</span>
+	</button>
 </div>

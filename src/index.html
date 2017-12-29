@@ -30,7 +30,7 @@
 <header id="navContainer" class="grid-container">
 	<div class="grid-x">
 		<section class="small-8 small-offset-4 large-4 large-offset-0 cell text-center logoArea">
-			<a href="/" rel="home"><h1><img ng-src="{{mvm.shortPath}}img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota" /></h1></a>
+			<a href="/" rel="home"><h1><img ng-src="{{ mvm.shortPath }}img/bnr_aron-mn.svg" alt="AroOnline - Aron Patterson's Web Developer Portfolio, Minnesota" /></h1></a>
 		</section>
 		<a class="sr-only" href="#mainContent" tabindex="-1">Skip to main content</a>
 		<!-- START: Nav -->
@@ -67,14 +67,14 @@
 				<li><a ng-href="/#!home">Home</a></li>
 				<li><a ng-href="/#!about">About</a></li>
 				<!--<li><a href="/#/resume">Resume</a></li>-->
-				<li><a ng-href="/#!developer-portfolio/">Portfolio</a></li>
-				<li><a ng-click="open()" aria-controls="contactForm" aria-haspopup="true" tabindex="0">Contact Me</a></li>
+				<li><a ng-href="/#!developer-portfolio">Portfolio</a></li>
+				<li><a ng-href="/#!contact">Contact Me</a></li>
 			</ul>
 			<section id="socialMedia" class="small-16 cell text-center noPrint">
 				<ul>
 					<li class="liLogo"><a href="http://linkedin.com/in/aronpatterson" target="_blank"><span class="fa fa-linkedin fa-2x"></span></a></li>
 					<li class="gitLogo"><a href="https://github.com/AronPatterson" target="_blank"><span class="fa fa-git-square fa-2x"></span></a></li>
-					<li class="conLogo"><a data-open="contactForm" aria-controls="contactForm" aria-haspopup="true" tabindex="0"><span class="fa fa-envelope fa-2x"></span></a></li>
+					<li class="conLogo"><a ng-href="/#!contact"><span class="fa fa-envelope fa-2x"></span></a></li>
 				</ul>
 			</section>
 			<section class="small-16 cell text-center">
@@ -108,7 +108,7 @@
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script type="text/javascript" src="../angular/ao-angular-app.min.js"></script>
 <script type="text/javascript" src="../js/app.min.js"></script>
+<script type="text/javascript" src="../angular/ao.app.min.js"></script>
 </body>
 </html>
