@@ -6,8 +6,9 @@
 // Foundation Version: 6.4.3
 
 // STRUCTURE OPTIONS //
-$aron-box-mode: 1px; // set a 1px border on everything, so you can see the outlines of the elements
+$aron-box-mode: 0px; // set a 1px border on everything, so you can see the outlines of the elements
 $global-flexbox: true;
+$global-prototype-breakpoints: true;
 
 // COLORS
 // custom colors
@@ -83,16 +84,18 @@ $breakpoints: (
 $print-breakpoint: large;
 $breakpoint-classes: (small medium large xlarge xxlarge);
 
-// THE GRID
-$grid-row-width: $global-width;
-$grid-column-count: $ao-grid-columns;
-$grid-column-gutter: (
-  small: 16px,
-  medium: 30px,
+// Xy Grid
+$xy-grid: true;
+$grid-container: $global-width;
+$grid-columns: $ao-grid-columns;
+$grid-margin-gutters: (
+  small: 0px,
+  medium: 0px
 );
-$grid-column-align-edge: true;
-$grid-column-alias: 'columns';
-$block-grid-max: 8;
+$grid-padding-gutters: $grid-margin-gutters;
+$grid-container-padding: $grid-padding-gutters;
+$grid-container-max: $global-width;
+$xy-block-grid-max: 8;
 
 // BODY
 $body-background: $ao-body-background;
@@ -183,16 +186,3 @@ $titlebar-icon-color: $ao-titlebar-icon-color;
 $titlebar-icon-color-hover: $ao-titlebar-icon-color-hover;
 $titlebar-icon-spacing: $ao-titlebar-icon-spacing;
 
-// Xy Grid
-
-$xy-grid: true;
-$grid-container: $global-width;
-$grid-columns: $ao-grid-columns;
-$grid-margin-gutters: (
-  small: 0px,
-  medium: 0px
-);
-$grid-padding-gutters: $grid-margin-gutters;
-$grid-container-padding: $grid-padding-gutters;
-$grid-container-max: $global-width;
-$xy-block-grid-max: 8;
