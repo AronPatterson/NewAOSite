@@ -54,7 +54,7 @@ function sass() {
       browsers: COMPATIBILITY
     }))
     // Comment in the pipe below to run UnCSS in production
-    .pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
+    //.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
     .pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
     .pipe($.if(!PRODUCTION, $.sourcemaps.write()))
     .pipe(gulp.dest(PATHS.dist + '/css'))
@@ -97,6 +97,7 @@ function angular() {
   return gulp.src(PATHS.angulardir)
     .pipe(named())
     .pipe($.sourcemaps.init())
+    .pipe(webpackStream(webpackConfig, webpack2))
     .pipe($.if(PRODUCTION, $.uglify()
       .on('error', e => { console.log(e); })
     ))
@@ -137,16 +138,16 @@ function server(done) {
 // Watch for changes to static template pages, Sass, and JavaScript
 function watch() {
   gulp.watch(PATHS.assets, copy);
-  gulp.watch('src/**/*.html').on('all', gulp.series(copy, mochaTesting, browser.reload)); // this watches the html content for changes
-  gulp.watch('src/scss/**/*.scss').on('all', sass); // SASS for changes
-  gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, mochaTesting, browser.reload)); // JS for changes
-  gulp.watch('src/angular/**/*.js').on('all', gulp.series(angular, mochaTesting, browser.reload)); // Angular for changes
+  gulp.watch('src/**/*.html').on('all', gulp.series(copy, browser.reload)); // this watches the html content for changes
+  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass, browser.reload)); // SASS for changes
+  gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload)); // JS for changes
+  gulp.watch('src/angular/**/*.js').on('all', gulp.series(angular, browser.reload)); // Angular for changes
   gulp.watch('src/img/**/*').on('all', gulp.series(images, browser.reload)); // images for changes
 }
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
- gulp.series(clean, gulp.parallel(sass, javascript, angular, mochaTesting, images, copy)));
+ gulp.series(clean, gulp.parallel(sass, javascript, angular, images, copy)));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
