@@ -17,7 +17,6 @@
 	.controller('AboutCtrl', ['aoGenFunctions', AboutCtrl])
 	.controller('PortfolioCtrl', ['aoGenFunctions', PortfolioCtrl])
 	.controller('ContactCtrl', ['aoGenFunctions', ContactCtrl]);
-
 	function stringFunction(obj) { // global object for debuggin'
 		return JSON.stringify(obj, null, 4);
 	}

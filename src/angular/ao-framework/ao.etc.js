@@ -61,7 +61,6 @@
 					t.preventDefault(), a( 'body,html' ).animate({ scrollTop: 0 }, d)
 				});
 			});
-			return;
 		}
 	}
 })();
