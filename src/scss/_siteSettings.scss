@@ -2,8 +2,10 @@
 // In this file, we store all of our changeable SCSS variables, as well as our font imports and certain mixins
 // These variables are free to be used within Foundation's _settings.scss as well.
 // AroOnline Responsive Template
-// Version: 3 (R U Minified?)
+// Version: 3.1 (R U Minified?)
 // Foundation Version: 6.4.3
+
+@import 'util/util';
 
 // STRUCTURE OPTIONS //
 $aron-box-mode: 0px; // set a 1px border on everything, so you can see the outlines of the elements
@@ -18,13 +20,6 @@ $scarlet: #952c3b;
 $deep-red: #301e20;
 
 // generic colors
-$foundation-palette: (
-  primary: $primary-color,
-  secondary: $scarlet,
-  success: #3adb76,
-  warning: #ffae00,
-  alert: #ec5840
-);
 $gray: #999999;
 $light-gray: #e7e7e7; // content
 $medium-gray: #636363; // nav, footer
@@ -35,21 +30,28 @@ $white: #fff;
 $primary-color: $brown;
 $secondary-color: $black;
 
+$foundation-palette: (
+  primary: $primary-color,
+  secondary: $scarlet,
+  success: #3adb76,
+  warning: #ffae00,
+  alert: #ec5840
+);
+
 // TRANSLATOR //
 // rather than renaming these every time Foundation updates, we translate them in this file to our own static variables
 // when Foundation updates, all we have to do is replace what variables were updated
 // this prevents us from having to hunt them down inside the Foundation file
 $ao-font-size: 100%;
-$ao-global-width: rem-calc(1280);
+$ao-global-width: rem-calc(1124);
 $ao-body-font-family: "Open Sans", Arial, sans-serif;
 $ao-body-font-color: $deep-red;
-$ao-body-background: $body-background;
 $ao-global-radius: 4px;
 $ao-global-lineheight: 1.5;
 $ao-header-font-family: "Indie Flower", sans-serif;
 $ao-header-font-weight: bold; // normal, bold, bolder
 $ao-header-font-style: normal; // italic, underline
-$ao-body-background: url('../img/bg_underlay.jpg') no-repeat $white;
+$ao-body-background: transparent url('../img/bg_underlay.jpg') no-repeat center center;
 $ao-loader-icon: transparent url('../img/svg-loader.svg') no-repeat center center;
 $ao-mouse-outline: $scarlet;
 $ao-grid-columns: 16;

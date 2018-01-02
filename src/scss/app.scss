@@ -1,8 +1,8 @@
 /*!
-Theme Name: AroOnline August Ash Theme
+Theme Name: AroOnline Theme
 Theme URI: http://www.aroonline.com
-Description: AroOnline theme for August Ash.
-Version: 1.0
+Description: AroOnline theme.
+Version: 2.0
 Author: Aron Patterson
 Author URI: http://www.aroonline.com
 */
@@ -10,12 +10,12 @@ Author URI: http://www.aroonline.com
 @charset 'utf-8';
 
 @import 'settings';
-@import 'siteSettings'; // our custom variable override - doesn't add too much extra overhead, while maintaining the original settings in case of bugs
 @import 'foundation';
 @import 'motion-ui';
+@import 'siteSettings'; // our custom variable override - doesn't add too much extra overhead, while maintaining the original settings in case of bugs
 
 @include foundation-global-styles;
-// @include foundation-grid;
+// @include foundation-grid; 
 // @include foundation-flex-grid;
 //
 @include foundation-xy-grid-classes;
@@ -63,6 +63,9 @@ Author URI: http://www.aroonline.com
 @include motion-ui-animations;
 
 // Custom Components - loaded after Foundation, in case we have any style overwrites/hacks
+// Import base styles
+@import "components/framework";
+
 // Import base styles
 @import "components/base";
 

@@ -14,17 +14,17 @@
 			delete $httpProvider.defaults.headers.common['X-Requested-With'];
 			$locationProvider.html5Mode(false).hashPrefix('!');
 			$routeProvider.when('/', {
-				templateUrl: '../templates/home.html',
-				controller: 'MainCtrl',
-				controllerAs: 'mvm'
+				templateUrl: '../templates/content/home.html',
+				controller: 'HomeCtrl',
+				controllerAs: 'MainCtrl'
 			})
 			.when('/about', {
-				templateUrl: '../templates/about.html',
+				templateUrl: '../templates/content/about.html',
 				controller: 'AboutCtrl',
 				controllerAs: 'MainCtrl'
 			})
 			.when('/developer-portfolio', {
-				templateUrl: '../templates/portfolio.html',
+				templateUrl: '../templates/content/portfolio.html',
 				controller: 'PortfolioCtrl',
 				controllerAs: 'MainCtrl',
 				bindings: {
@@ -32,12 +32,12 @@
 				}
 			})
 			.when('/contact', {
-				templateUrl: '../templates/contact.html',
+				templateUrl: '../templates/content/contact.html',
 				controller: 'ContactCtrl',
 				controllerAs: 'MainCtrl'
 			})
 			.otherwise({
-				templateUrl: '../templates/404.html'
+				templateUrl: '../templates/content/404.html'
 			})
 		}
 	]);

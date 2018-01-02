@@ -19,6 +19,9 @@
 	}
 	img {
 		max-width: 75%;
+		@include breakpoint(medium down) {
+			max-width: 50%;
+		}
 	}
 }
 
@@ -39,6 +42,9 @@
 	}
 }
 @if $global-flexbox == true {
+	.accordion-menu li {
+		width: auto;
+	}
 	.titleBarToggle {
 		width: 100%;
 		text-align: center;
@@ -63,6 +69,12 @@
 	}
 	#mainNav {
 		font-weight: bolder;
+		.activeLink {
+			color: $scarlet!important;
+			&::before {
+				background-color: $scarlet!important;
+			}
+		}
 		@include breakpoint(medium down) {
 			a {
 				width: 100%;
@@ -78,7 +90,7 @@
 				1px -1px 0 $deep-red, 
 				-1px 1px 0 $deep-red, 
 				1px 1px 0 $deep-red;
-				&:hover {
+				&:hover, &.active {
 					background-color: $scarlet;
 					color: $white;
 				}
@@ -106,7 +118,7 @@
 							height: 28px;
 						}
 					}
-					&:hover {
+					&:hover, &.activeLink {
 						color: $scarlet;
 						&::before {
 							background-color: $scarlet;
@@ -117,6 +129,7 @@
 		}
 	}
 }
+
 
 
 /*/ CONTENT /*/
@@ -192,8 +205,9 @@
 
 // Home
 .homeSide {
-	padding-left: 20px;
-	padding-right: 20px;
+	@include breakpoint(medium up) {
+		padding-left: 20px;
+	}
 	h2,h3 {
 		span {
 			color: $scarlet;

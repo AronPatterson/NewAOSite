@@ -42,11 +42,11 @@
 				</div>
 			</div>
 			<ul id="mainNav" class="menu large-horizontal medium-vertical small-text-center align-right" data-responsive-menu="accordion large-dropdown medium-accordion">
-				<li role="menuitem"><a ng-href="/" tabindex="0">Home</a></li>
-				<li role="menuitem"><a ng-href="/#!about">About</a></li>
+				<li role="menuitem"><a class="homeNavLink" ng-href="/">Home</a></li>
+				<li role="menuitem"><a class="aboutNavLink" ng-href="/#!about">About</a></li>
 				<!--<li><a href="/#/resume">Resume</a></li>-->
-				<li role="menuitem"><a ng-href="/#!developer-portfolio">Portfolio</a></li>
-				<li role="menuitem"><a ng-click="open()" aria-controls="contactForm" aria-haspopup="true">Contact</a></li>
+				<li role="menuitem"><a class="portNavLink" ng-href="/#!developer-portfolio">Portfolio</a></li>
+				<li role="menuitem"><a class="contactNavLink" ng-href="/#!contact">Contact</a></li>
 			</ul>
 		</nav>
 		<!-- END: /Nav -->
@@ -64,11 +64,11 @@
 	<div role="navigation grid-container">
 		<div class="footNav noPrint grid-x" role="navigation">
 			<ul class="small-16 cell menu">
-				<li><a ng-href="/#!home">Home</a></li>
-				<li><a ng-href="/#!about">About</a></li>
+				<li><a class="homeNavLink" ng-href="/">Home</a></li>
+				<li><a class="aboutNavLink" ng-href="/#!about">About</a></li>
 				<!--<li><a href="/#/resume">Resume</a></li>-->
-				<li><a ng-href="/#!developer-portfolio">Portfolio</a></li>
-				<li><a ng-href="/#!contact">Contact Me</a></li>
+				<li><a class="portNavLink" ng-href="/#!developer-portfolio">Portfolio</a></li>
+				<li><a class="contactNavLink" ng-href="/#!contact">Contact Me</a></li>
 			</ul>
 			<section id="socialMedia" class="small-16 cell text-center noPrint">
 				<ul>
@@ -104,7 +104,7 @@
     </div>
 </div>
 <!-- END: /#cloudWrapper -->
-<a href="#top" class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
+<a href="#top" ng-attr-class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

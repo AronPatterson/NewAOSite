@@ -109,8 +109,15 @@ a {
 	// position: relative;
 	// width: 100%;
 	// margin: 0 auto;
-}
 
+
+}
+	#mainNav li a.activeLink {
+		color: $scarlet!important;
+		&::before {
+			background-color: $scarlet!important;
+		}
+	}
 
 /*/ MODULES /*/
 
@@ -153,6 +160,9 @@ a {
 			1px -1px 0 $deep-red, 
 			-1px 1px 0 $deep-red, 
 			1px 1px 0 $deep-red;
+			&.activeLink {
+				color: scale-color($white, $lightness: -30%);
+			}
 		}
 	}
 }

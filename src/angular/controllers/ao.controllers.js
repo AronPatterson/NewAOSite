@@ -12,22 +12,20 @@
 	.constant('config', {
 		shortPath: '../'
 	})
-	.controller('MainCtrl', ['$http', 'config', MainCtrl])
-	.controller('HomeCtrl', HomeCtrl)
-	.controller('AboutCtrl', AboutCtrl)
-	.controller('PortfolioCtrl', PortfolioCtrl)
-	.controller('ContactCtrl', PortfolioCtrl)
-	.controller('ModalCtrl', ['$scope', '$modal', ModalCtrl]);
+	.controller('MainCtrl', ['$http', 'config', 'aoGenFunctions', MainCtrl])
+	.controller('HomeCtrl', ['aoGenFunctions', HomeCtrl])
+	.controller('AboutCtrl', ['aoGenFunctions', AboutCtrl])
+	.controller('PortfolioCtrl', ['aoGenFunctions', PortfolioCtrl])
+	.controller('ContactCtrl', ['aoGenFunctions', ContactCtrl]);
 
 	function stringFunction(obj) { // global object for debuggin'
 		return JSON.stringify(obj, null, 4);
 	}
-	function scrollToTop() {
-		window.scrollTo(0, 0);
-		return;
-	}
 	// our Main Controller holds the General Settings of ALL controllers
-	function MainCtrl($http, config) {
+	function MainCtrl($http, config, aoGenFunctions) {
+		$(function(){
+			aoGenFunctions.backToTop();
+		});
 		var mvm = this; // main view model
 		mvm.shortPath = config.shortPath;
 		mvm.loading = true;
@@ -45,26 +43,29 @@
 			console.log('error: ' + error);
 		};
 	}
-	function HomeCtrl() {
+	function HomeCtrl(aoGenFunctions) {
 		$(function(){
-			//start at top of page
-			scrollToTop();
+			aoGenFunctions.scrollToTop();
+			$(".homeNavLink").addClass("activeLink");
+			$(".aboutNavLink, .portNavLink, .contactNavLink").removeClass("activeLink");
 		});
 		var vm = this; // view model
 		vm.title = 'I\'m in home';
 	}
-	function AboutCtrl() {
+	function AboutCtrl(aoGenFunctions) {
 		$(function(){
-			//start at top of page
-			scrollToTop();
+			aoGenFunctions.scrollToTop();
+			$(".aboutNavLink").addClass("activeLink");
+			$(".homeNavLink, .portNavLink, .contactNavLink").removeClass("activeLink");
 		});
 		var vm = this; // view model
 		vm.title = 'I\'m in about';
 	}
-	function PortfolioCtrl() {
+	function PortfolioCtrl(aoGenFunctions) {
 		$(function(){
-			//start at top of page
-			scrollToTop();
+			aoGenFunctions.scrollToTop();
+			$(".portNavLink").addClass("activeLink");
+			$(".homeNavLink, .aboutNavLink, .contactNavLink").removeClass("activeLink");
 		});
 		var vm = this; // view model
 		vm.portfolio = [{
@@ -112,16 +113,13 @@
 			liveURL: 'http://www.northlandpetlodge.com'
 		}];
 	}
-	function ContactCtrl() {
+	function ContactCtrl(aoGenFunctions) {
 		$(function(){
-			//start at top of page
-			scrollToTop();
+			aoGenFunctions.scrollToTop();
+			$(".contactNavLink").addClass("activeLink");
+			$(".homeNavLink, .aboutNavLink, .portNavLink").removeClass("activeLink");
 		});
 		var vm = this; // view model
 		vm.title = 'I\'m in about';
-	}
-	function ModalCtrl() {
-		var vm = this; // view model
-		vm.title = 'I\'m a modal';
 	}
 })();
