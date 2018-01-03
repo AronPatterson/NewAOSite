@@ -139,7 +139,7 @@ function server(done) {
 function watch() {
   gulp.watch(PATHS.assets, copy);
   gulp.watch('src/**/*.html').on('all', gulp.series(copy, browser.reload)); // this watches the html content for changes
-  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass, browser.reload)); // SASS for changes
+  gulp.watch('src/scss/**/*.scss').on('all', gulp.series(sass)); // SASS for changes
   gulp.watch('src/js/**/*.js').on('all', gulp.series(javascript, browser.reload)); // JS for changes
   gulp.watch('src/angular/**/*.js').on('all', gulp.series(angular, browser.reload)); // Angular for changes
   gulp.watch('src/img/**/*').on('all', gulp.series(images, browser.reload)); // images for changes
