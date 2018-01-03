@@ -18,8 +18,6 @@ function navScripts() {
 	});
 }
 
-
-
 function footerScripts() {
 	// Footer Navigation Integration
 	//$( '.footNav ul li a' ).addClass( 'align-center' ); // makes sure these are center

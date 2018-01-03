@@ -9,10 +9,7 @@
 		'ao.routes',
 		'ao.etc'
 	])
-	.constant('config', {
-		shortPath: '../'
-	})
-	.controller('MainCtrl', ['$http', 'config', 'aoGenFunctions', MainCtrl])
+	.controller('MainCtrl', ['$http', '$location', 'aoGenFunctions', 'aoInfo', MainCtrl])
 	.controller('HomeCtrl', ['aoGenFunctions', HomeCtrl])
 	.controller('AboutCtrl', ['aoGenFunctions', AboutCtrl])
 	.controller('PortfolioCtrl', ['aoGenFunctions', PortfolioCtrl])
@@ -21,24 +18,24 @@
 		return JSON.stringify(obj, null, 4);
 	}
 	// our Main Controller holds the General Settings of ALL controllers
-	function MainCtrl($http, config, aoGenFunctions) {
+	function MainCtrl($http, $location, aoGenFunctions, aoInfo) {
 		$(function(){
 			aoGenFunctions.backToTop();
 		});
 		var mvm = this; // main view model
-		mvm.shortPath = config.shortPath;
-		mvm.loading = true;
+		mvm.shortPath = aoInfo.shortPath;
+		var aoURL = $location.url();
 		$http({
 			method: 'GET',
-			url: '/'
+			url: aoURL;
 		})
 		.then(successCallback, errorCallback);
 		function successCallback(response){
-			mvm.loading = false;
+			$('.modalContainer').removeClass('modalLoader');
 			console.log('works: ' + stringFunction(response));
 		}
 		function errorCallback(error){
-			mvm.loading = false;
+			$('.modalContainer').removeClass('modalLoader');
 			console.log('error: ' + error);
 		};
 	}

@@ -55,7 +55,6 @@
 <!-- END: /#navContainer -->
 <!-- START: #mainContent -->
 <main id="mainContent" role="main">
-	<loading></loading>
 	<div id="contentBox" class="grid-container" ng-view></div>
 </main>
 <!-- END: #mainContent -->
@@ -105,10 +104,10 @@
 </div>
 <!-- END: /#cloudWrapper -->
 <a href="#top" ng-attr-class="backToTopBtn" title="Back to Top"><i class="fa fa-arrow-up"></i></a>
-
+<div class="modalContainer modalLoader"></div>
 <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" integrity="sha256-0rguYS0qgS6L4qVzANq4kjxPLtvnp5nn2nB5G1lWRv4=" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../angular/ao.app.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
 <script type="text/javascript" src="../js/app.min.js"></script>
-<script type="text/javascript" src="../angular/ao.app.min.js"></script>
 </body>
 </html>

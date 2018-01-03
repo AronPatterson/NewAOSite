@@ -9,30 +9,18 @@
 		'ao.controllers',
 		'ao.etc'
 	])
-	.directive('loadOverlay', loadOverlay);
-	function loadOverlay() {
-		return {
-			restrict: 'E',
-			replace: true,
-			template: '<div class="loading" style="background-color: #000; z-index: 999;"><img src="../img/svg-loader.svg" width="20" height="20" />LOADING...</div>',
-			link: function (scope, element, attr) {
-				scope.$watch('loading', function (val) {
-					if (val) {
-						elm.show();
-					} else {
-						elm.hide();
-					}
-				});
-			}
-		}
+	.factory('aoInfo', aoInfo);
+	function aoInfo() {
+		var aoGeneral = {};
+		aoGeneral.shortPath = '../';
+		return aoGeneral;
 	}
-
 })();
 
 // FACTORIES
 (function(){
 	'use strict';
-	angular.module('aoOnline');
+	angular.module('aoOnline')
 });
 
 // SERVICES
@@ -42,13 +30,11 @@
 	.service('aoGenFunctions', aoGenFunctions);
 	function aoGenFunctions() {
 		this.scrollToTop = function() {
-			console.log('stt');
 			//start at top of page
 			window.scrollTo(0, 0);
 			return;
 		}
 		this.backToTop = function() {
-			console.log('btt');
 			$( function(a) { // loads our Back to Top button
 				// this sets up our "Back to Top" button, which will follow you only once you reach a certain point (beyond the normal page's screen height)
 				var t = 300, // px height on page where it starts to show up

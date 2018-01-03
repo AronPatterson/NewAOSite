@@ -19,6 +19,18 @@ body {
 	overflow-x: hidden;
 }
 
+
+.modalLoader {
+	display: inline-block;
+	position: absolute;
+	background: rgba($black,.7) url('../img/svg-loader.svg') center center no-repeat;
+	z-index: 999;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
 // SELECTION (selecting text) & PLACEHOLDER (empty field placeholder text, for forms)
 // please do not try to combine these via commas - they need to be their own independent elements
 ::-moz-selection {
